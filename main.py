@@ -48,10 +48,10 @@ while response != 'exit()':
       mem = mem + "\n" + "[user]: " + message
 
   print("\n" + "querying API")
-  prompt = "Please take the role of the following character definition: " + definition + "\n" + "The user's name is " + username + "\n" + "Your current memories include the following, where you are [AI] and the user is [user]: " + "\n" + mem + "\n" + "Please reply to the following message, which is written by the user unless otherwise specified by [other_user_name]: " + "\n" + message
+  prompt = "Please take the role of the following character definition: " + definition + "\n" + "The user's name is " + username + "\n" + "Your current memories include the following, where you are [AI] and the user is [user]: " + "\n" + mem + "\n" + "Please reply to the following message, which is written by the user unless otherwise specified. Please do not add [AI] or any other user tag to the beginning of your message, as that will be done by the program." + "\n" + message
   reply = model.generate_content(prompt)
 
-  mem = mem + "\n" + "[AI]: " + reply.text
+  mem = mem + "\n" + "[AI]:" + reply.text
 
   print("\n" + "updating memory")
   with open('.mem', 'w') as m:
